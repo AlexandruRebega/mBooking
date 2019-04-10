@@ -13,5 +13,12 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <!--search activity strings-->
     <string name="title_activity_search">SearchActivity</string>
+    <string name="where_to_travel">Where would you like to travel?</string>
+    <string name="search_location">Search location...</string>
+    <string name="departure_date">Enter date: from</string>
+    <string name="until_date">until</string>
+    <string name="how_many">How many?</string>
+    <!--<string name=""></string>-->
 </resources>
