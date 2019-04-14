@@ -9,6 +9,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -20,12 +21,16 @@ import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class SearchActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
     private static final LatLngBounds LAT_LNG_BOUNDS =  new LatLngBounds(
             new LatLng(-40, -168), new LatLng(71, 136));
+    private static final String TAG = "SearchActivity";
 
     private Context mContext;
     private AutoCompleteTextView mSearchView;
@@ -100,6 +105,7 @@ public class SearchActivity extends AppCompatActivity implements GoogleApiClient
         boolean cancel = false;
         View focusView = null;
 
+        // Check dialog boxes for empty strings
         if(mSearchView.getText().toString().isEmpty()) {
             cancel = true;
             focusView = mSearchView;
@@ -121,31 +127,57 @@ public class SearchActivity extends AppCompatActivity implements GoogleApiClient
             mUntilEditText.setError("Please select a date");
         }
 
-        // compare dates
-        //TODO
-
         String howMany = mHowManyEditText.getText().toString();
         if(howMany.isEmpty()) {
             cancel = true;
             focusView = mHowManyEditText;
             mHowManyEditText.setError("How many travellers?");
         }
-        int n;
-        try {
-            n = Integer.parseInt(howMany);
-        }
-        catch (NumberFormatException e)
-        {
-            n = 0;
-        }
-        if(n == 0) {
-            cancel = true;
-            focusView = mHowManyEditText;
-            mHowManyEditText.setError("How many travellers?");
+
+        // check nr. of travelers > 0 & check-in/out date sanity
+        if(!cancel) {
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+            try {
+                Date checkIn = formatter.parse(fromDate);
+                Date checkOut = formatter.parse(untilDate);
+                Date today = Calendar.getInstance().getTime();
+
+                if(today.after(checkIn)){
+                    cancel = true;
+                    focusView = mFromEditText;
+                    mFromEditText.setError("CheckIn date must be a future date!");
+                }
+                if(checkIn.after(checkOut)){
+                    cancel = true;
+                    focusView = mUntilEditText;
+                    mUntilEditText.setError("CheckOut date is invalid!");
+                }
+
+            }catch (ParseException e) {
+                Log.e(TAG, "Parse exception while parsing date:" + e.toString());
+                cancel = true;
+                focusView = mFromEditText;
+                mFromEditText.setError("Enter the check-in date");
+                mUntilEditText.setError("Enter the check-out date");
+            }
+
+            int n;
+            try {
+                n = Integer.parseInt(howMany);
+            }
+            catch (NumberFormatException e)
+            {
+                Log.e(TAG, "Number format exception:" + e.toString());
+                n = 0;
+            }
+            if(n == 0) {
+                cancel = true;
+                focusView = mHowManyEditText;
+                mHowManyEditText.setError("How many travellers?");
+            }
         }
 
-
-
+        // highlight errors or lunch new activity
         if(cancel){
             focusView.requestFocus();
         } else {
@@ -218,7 +250,6 @@ public class SearchActivity extends AppCompatActivity implements GoogleApiClient
         @Override
         public void afterTextChanged(Editable s) {}
     };
-
 
 
 }
