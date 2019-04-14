@@ -130,6 +130,21 @@ public class SearchActivity extends AppCompatActivity implements GoogleApiClient
             focusView = mHowManyEditText;
             mHowManyEditText.setError("How many travellers?");
         }
+        int n;
+        try {
+            n = Integer.parseInt(howMany);
+        }
+        catch (NumberFormatException e)
+        {
+            n = 0;
+        }
+        if(n == 0) {
+            cancel = true;
+            focusView = mHowManyEditText;
+            mHowManyEditText.setError("How many travellers?");
+        }
+
+
 
         if(cancel){
             focusView.requestFocus();
