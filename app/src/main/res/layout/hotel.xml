@@ -28,7 +28,7 @@
         app:layout_constraintGuide_begin="145dp" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/hotelNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
@@ -45,7 +45,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/RoomsTextView"
+        android:id="@+id/hotelRoomsTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
@@ -58,7 +58,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.12"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/hotelNameTextView" />
 
     <RatingBar
         android:id="@+id/ratingBar"
@@ -87,7 +87,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.12"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/RoomsTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/hotelRoomsTextView" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline2"

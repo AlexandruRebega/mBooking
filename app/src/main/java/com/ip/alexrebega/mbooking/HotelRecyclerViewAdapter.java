@@ -3,6 +3,8 @@ package com.ip.alexrebega.mbooking;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import java.util.List;
@@ -15,10 +17,20 @@ public class HotelRecyclerViewAdapter extends RecyclerView.Adapter<HotelRecycler
     // you provide access to all the views for a data item in a view holder
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
-        public TextView textView;
+        public ImageView hImage;
+        public TextView hName;
+        public TextView hRooms;
+        public TextView hPrice;
+        public RatingBar hRating;
+
+
         public MyViewHolder(TextView v) {
             super(v);
-            textView = v;
+            hImage = v.findViewById(R.id.hotelImageView);
+            hName = v.findViewById(R.id.hotelNameTextView);
+            hRooms = v.findViewById(R.id.hotelRoomsTextView);
+            hPrice = v.findViewById(R.id.priceTextView);
+            hRating = v.findViewById(R.id.ratingBar);
         }
     }
 
@@ -31,11 +43,10 @@ public class HotelRecyclerViewAdapter extends RecyclerView.Adapter<HotelRecycler
     @Override
     public HotelRecyclerViewAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
-//        TextView v = (TextView) LayoutInflater.from(parent.getContext())
-//                .inflate(R.layout.my_text_view, parent, false);
+        TextView v = (TextView) LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.hotel, parent, false);
 
-//        MyViewHolder vh = new MyViewHolder(v);
-        MyViewHolder vh;
+        MyViewHolder vh = new MyViewHolder(v);
         return vh;
     }
 
@@ -44,8 +55,12 @@ public class HotelRecyclerViewAdapter extends RecyclerView.Adapter<HotelRecycler
     public void onBindViewHolder(MyViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-//        holder.textView.setText(mDataset.get(position));
-
+//        holder.setText(mDataset.get(position));
+        holder.hName.setText(mDataset.get(position).getmHotelName());
+        holder.hRooms.append(Integer.toString(mDataset.get(position).getmRooms()));
+        holder.hPrice.append(Double.toString(mDataset.get(position).getmPrice()));
+        holder.hRating.setRating(mDataset.get(position).getmRating());
+        holder.hImage.setImageResource(mDataset.get(position).getImageId());
     }
 
     // Return the size of your dataset (invoked by the layout manager)
