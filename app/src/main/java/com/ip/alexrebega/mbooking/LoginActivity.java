@@ -86,7 +86,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }else if(skip_to_search_result_activity) {
                 i = new Intent(this, SearchResultActivity.class);
             }
-            
+
             startActivity(i);
         }
 
