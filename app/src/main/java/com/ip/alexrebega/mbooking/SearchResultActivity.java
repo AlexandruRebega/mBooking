@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SearchResultActivity extends AppCompatActivity {
@@ -16,7 +17,7 @@ public class SearchResultActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private TextView mNoResultTextView;
 
-    List<Hotel> dummy_hotels_dataset;
+    List<Hotel> dummy_hotels_dataset = new ArrayList<Hotel>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +57,7 @@ public class SearchResultActivity extends AppCompatActivity {
         h1.setmRooms(4);
         h1.setmPrice(234.30);
         h1.setmRating(4.5f);
-        h1.setImageId(R.drawable.h1_Luxton);
+        h1.setImageId(R.drawable.h1_luxton);
         dummy_hotels_dataset.add(h1);
 
         h1 = new Hotel();
@@ -64,7 +65,7 @@ public class SearchResultActivity extends AppCompatActivity {
         h1.setmRooms(12);
         h1.setmPrice(221.60);
         h1.setmRating(4.3f);
-        h1.setImageId(R.drawable.h2_ElCastillio);
+        h1.setImageId(R.drawable.h2_elcastillio);
         dummy_hotels_dataset.add(h1);
 
         h1 = new Hotel();
@@ -72,7 +73,7 @@ public class SearchResultActivity extends AppCompatActivity {
         h1.setmRooms(6);
         h1.setmPrice(262.50);
         h1.setmRating(4f);
-        h1.setImageId(R.drawable.h3_hardROck);
+        h1.setImageId(R.drawable.h3_hardrock);
         dummy_hotels_dataset.add(h1);
 
         h1 = new Hotel();
@@ -80,7 +81,7 @@ public class SearchResultActivity extends AppCompatActivity {
         h1.setmRooms(9);
         h1.setmPrice(195.00);
         h1.setmRating(3.8f);
-        h1.setImageId(R.drawable.h4_Queens);
+        h1.setImageId(R.drawable.h4_queens);
         dummy_hotels_dataset.add(h1);
 
         h1 = new Hotel();
@@ -88,7 +89,7 @@ public class SearchResultActivity extends AppCompatActivity {
         h1.setmRooms(21);
         h1.setmPrice(194.30);
         h1.setmRating(3.7f);
-        h1.setImageId(R.drawable.h5_FirstWorld);
+        h1.setImageId(R.drawable.h5_firstworld);
         dummy_hotels_dataset.add(h1);
 
         h1 = new Hotel();
@@ -96,7 +97,7 @@ public class SearchResultActivity extends AppCompatActivity {
         h1.setmRooms(4);
         h1.setmPrice(219.99);
         h1.setmRating(4.7f);
-        h1.setImageId(R.drawable.h6_Sunshine);
+        h1.setImageId(R.drawable.h6_sunshine);
         dummy_hotels_dataset.add(h1);
 
         h1 = new Hotel();
@@ -104,7 +105,7 @@ public class SearchResultActivity extends AppCompatActivity {
         h1.setmRooms(2);
         h1.setmPrice(204.70);
         h1.setmRating(4.2f);
-        h1.setImageId(R.drawable.h7_Baglioni);
+        h1.setImageId(R.drawable.h7_baglioni);
         dummy_hotels_dataset.add(h1);
 
         h1 = new Hotel();
@@ -112,7 +113,7 @@ public class SearchResultActivity extends AppCompatActivity {
         h1.setmRooms(14);
         h1.setmPrice(289.30);
         h1.setmRating(4.8f);
-        h1.setImageId(R.drawable.h8_NewPearl);
+        h1.setImageId(R.drawable.h8_newpearl);
         dummy_hotels_dataset.add(h1);
 
     }

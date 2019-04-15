@@ -1,5 +1,6 @@
 package com.ip.alexrebega.mbooking;
 
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -24,7 +25,7 @@ public class HotelRecyclerViewAdapter extends RecyclerView.Adapter<HotelRecycler
         public RatingBar hRating;
 
 
-        public MyViewHolder(TextView v) {
+        public MyViewHolder(ConstraintLayout v) {
             super(v);
             hImage = v.findViewById(R.id.hotelImageView);
             hName = v.findViewById(R.id.hotelNameTextView);
@@ -43,7 +44,7 @@ public class HotelRecyclerViewAdapter extends RecyclerView.Adapter<HotelRecycler
     @Override
     public HotelRecyclerViewAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
-        TextView v = (TextView) LayoutInflater.from(parent.getContext())
+        ConstraintLayout v = (ConstraintLayout) LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.hotel, parent, false);
 
         MyViewHolder vh = new MyViewHolder(v);
