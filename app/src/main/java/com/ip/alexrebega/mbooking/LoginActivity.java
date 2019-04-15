@@ -67,10 +67,31 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mProgressView;
     private View mLoginFormView;
 
+    private static final boolean DEBUG_SKIP_LOGIN = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        // skip: jump to another activity for a quick debug
+        if(DEBUG_SKIP_LOGIN) {
+            boolean skip_to_search_activity = false;
+            boolean skip_to_search_result_activity = true;
+
+            Intent i = new Intent(this, SettingsActivity.class);
+
+            if(skip_to_search_activity){
+                i = new Intent(this, SearchActivity.class);
+            }else if(skip_to_search_result_activity) {
+                i = new Intent(this, SearchResultActivity.class);
+            }
+
+            startActivity(i);
+        }
+
+
+
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
