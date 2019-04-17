@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "844334397105-hkpbr939llcgk7lhesp3586olmqum2l9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ip.alexrebega.mbooking",
+            "certificate_hash": "4112b114925095c08471d1682205ceee66cdc8c7"
+          }
+        },
+        {
           "client_id": "844334397105-0eper6h2fch6tvjqo29nqe2d7jksammj.apps.googleusercontent.com",
           "client_type": 3
         }
