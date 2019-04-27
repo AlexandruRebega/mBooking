@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -55,7 +54,7 @@ public class SearchActivity extends AppCompatActivity implements GoogleApiClient
         setContentView(R.layout.activity_search);
 
         mContext = getApplicationContext();
-        FloatingActionButton openSettings = (FloatingActionButton) findViewById(R.id.settingsBtn);
+        FloatingActionButton openSettings = findViewById(R.id.settingsBtn);
         openSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

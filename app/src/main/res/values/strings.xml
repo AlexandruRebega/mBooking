@@ -27,6 +27,11 @@
     <!--search result activity strings-->
     <string name="no_search_result">No locations found...</string>
 
+    <!-- Strings related activity hotel view -->
+    <string name="book">Book Now!</string>
+    <string name="price">Price: </string>
+    <string name="rooms">Available rooms:</string>
+
     <!-- Strings related to Settings -->
 
     <!-- Example General settings -->
@@ -98,5 +103,11 @@
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
+    <string name="title_activity_hotel_view">My Hotel</string>
+    <string name="hotel_description">
+        "This is such a great hotel! It has everything!\n"
+    </string>
+
+    <string name="action_settings">Settings</string>
     <!--<string name=""></string>-->
 </resources>

@@ -1,8 +1,11 @@
 package com.ip.alexrebega.mbooking;
 
+import android.content.Intent;
+import android.content.Context;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -16,7 +19,7 @@ public class HotelRecyclerViewAdapter extends RecyclerView.Adapter<HotelRecycler
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         public ImageView hImage;
         public TextView hName;
@@ -32,7 +35,22 @@ public class HotelRecyclerViewAdapter extends RecyclerView.Adapter<HotelRecycler
             hRooms = v.findViewById(R.id.hotelRoomsTextView);
             hPrice = v.findViewById(R.id.priceTextView);
             hRating = v.findViewById(R.id.ratingBar);
+
+            v.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition(); // gets item position
+
+                    Hotel h = getAdapterData(position);
+                    if (position != RecyclerView.NO_POSITION) { // Check if an item was deleted, but the user clicked it before the UI removed it
+                        Intent i = new Intent(v.getContext(), HotelViewActivity.class);
+                        i.putExtra("hotelKey", h);
+                        v.getContext().startActivity(i);
+                    }
+                }
+            });
         }
+
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
@@ -68,5 +86,10 @@ public class HotelRecyclerViewAdapter extends RecyclerView.Adapter<HotelRecycler
     @Override
     public int getItemCount() {
         return mDataset.size();
+    }
+
+
+    public Hotel getAdapterData(int position) {
+        return mDataset.get(position);
     }
 }
