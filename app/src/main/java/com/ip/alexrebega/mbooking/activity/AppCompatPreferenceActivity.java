@@ -1,4 +1,4 @@
-package com.ip.alexrebega.mbooking;
+package com.ip.alexrebega.mbooking.activity;
 
 import android.content.res.Configuration;
 import android.os.Bundle;

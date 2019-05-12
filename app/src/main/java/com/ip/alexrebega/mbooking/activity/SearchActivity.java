@@ -1,4 +1,4 @@
-package com.ip.alexrebega.mbooking;
+package com.ip.alexrebega.mbooking.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -19,6 +19,8 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
+import com.ip.alexrebega.mbooking.PlaceAutocompleteAdapter;
+import com.ip.alexrebega.mbooking.R;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

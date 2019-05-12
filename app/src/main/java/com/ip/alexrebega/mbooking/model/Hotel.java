@@ -1,4 +1,4 @@
-package com.ip.alexrebega.mbooking;
+package com.ip.alexrebega.mbooking.model;
 
 
 import android.os.Parcel;
