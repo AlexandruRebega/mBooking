@@ -69,7 +69,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mProgressView;
     private View mLoginFormView;
 
-    private static final boolean DEBUG_SKIP_LOGIN = true;
+    private static final boolean DEBUG_SKIP_LOGIN = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

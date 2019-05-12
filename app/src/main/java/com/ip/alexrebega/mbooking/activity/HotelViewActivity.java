@@ -2,12 +2,16 @@ package com.ip.alexrebega.mbooking.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.ip.alexrebega.mbooking.BookingApp;
 import com.ip.alexrebega.mbooking.model.Hotel;
 import com.ip.alexrebega.mbooking.R;
 
@@ -19,7 +23,7 @@ public class HotelViewActivity extends AppCompatActivity {
     private RatingBar mHotelRating;
     private TextView mHotelRooms;
     private TextView mHotelPrice;
-
+    private Button mButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,5 +50,18 @@ public class HotelViewActivity extends AppCompatActivity {
 
         mHotelPrice = findViewById(R.id.priceTextView);
         mHotelPrice.append(Double.toString(hotel.getmPrice()));
+
+        mButton = findViewById(R.id.bookButton);
+        mButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showSnack();
+            }
+        });
+    }
+
+    private void showSnack(){
+        Snackbar.make(mButton, "Reservation complete!", Snackbar.LENGTH_SHORT)
+                .show();
     }
 }
