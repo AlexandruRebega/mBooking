@@ -1,4 +1,4 @@
-package com.ip.alexrebega.mbooking;
+package com.ip.alexrebega.mbooking.activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -30,6 +30,8 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.ip.alexrebega.mbooking.R;
 
 import java.util.ArrayList;
 import java.util.List;

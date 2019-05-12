@@ -1,7 +1,6 @@
 package com.ip.alexrebega.mbooking;
 
 import android.content.Intent;
-import android.content.Context;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,6 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+
+import com.ip.alexrebega.mbooking.activity.HotelViewActivity;
+import com.ip.alexrebega.mbooking.model.Hotel;
 
 import java.util.List;
 
