@@ -12,8 +12,12 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.ip.alexrebega.mbooking.BookingApp;
+import com.ip.alexrebega.mbooking.db.AppDatabase;
 import com.ip.alexrebega.mbooking.model.Hotel;
 import com.ip.alexrebega.mbooking.R;
+import com.ip.alexrebega.mbooking.model.User;
+
+import java.util.List;
 
 public class HotelViewActivity extends AppCompatActivity {
 
@@ -24,6 +28,8 @@ public class HotelViewActivity extends AppCompatActivity {
     private TextView mHotelRooms;
     private TextView mHotelPrice;
     private Button mButton;
+
+    AppDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +67,18 @@ public class HotelViewActivity extends AppCompatActivity {
     }
 
     private void showSnack(){
-        Snackbar.make(mButton, "Reservation complete!", Snackbar.LENGTH_SHORT)
-                .show();
+        database = AppDatabase.getAppDatabase(getApplicationContext());
+        List<User> users = database.userDao().getAll();
+
+        if(users!= null && users.size() != 0) {
+            Snackbar.make(mButton, "Reservation complete :"+ users.get(0).mail, Snackbar.LENGTH_SHORT)
+                    .show();
+
+        }
+        else{
+            Snackbar.make(mButton, "Reservation complete!", Snackbar.LENGTH_SHORT)
+                    .show();
+
+        }
     }
 }

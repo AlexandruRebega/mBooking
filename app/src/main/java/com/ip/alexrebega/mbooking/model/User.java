@@ -14,8 +14,8 @@ public class User {
     @ColumnInfo(name = "mail")
     public String mail;
 
-    @ColumnInfo(name = "reservations")
-    public List<Integer> reservationsId;
+//    @ColumnInfo(name = "reservations")
+//    public List<Integer> reservationsId;
 
     @ColumnInfo(name = "first_name")
     public String firstName;

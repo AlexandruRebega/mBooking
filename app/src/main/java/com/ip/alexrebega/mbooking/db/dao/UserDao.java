@@ -4,6 +4,7 @@ import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
+import android.arch.persistence.room.Update;
 
 import com.ip.alexrebega.mbooking.model.User;
 
@@ -24,6 +25,19 @@ public interface UserDao {
     @Insert
     void insertAll(User... users);
 
+    @Insert
+    void insert(User user);
+
     @Delete
     void delete(User user);
+
+    @Query("DELETE FROM user")
+    void deleteAll();
+
+    @Update
+    void update(User user);
+
+    @Query("UPDATE user SET mail = :mail WHERE uid =:id")
+    void update(String mail, int id);
+
 }

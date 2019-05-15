@@ -3,6 +3,7 @@ package com.ip.alexrebega.mbooking.activity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -32,6 +33,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.ip.alexrebega.mbooking.R;
+import com.ip.alexrebega.mbooking.db.AppDatabase;
+import com.ip.alexrebega.mbooking.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,10 +74,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private static final boolean DEBUG_SKIP_LOGIN = false;
 
+
+    private static final String DATABASE_NAME = "book_db";
+    private AppDatabase bookDb;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        bookDb = AppDatabase.getAppDatabase(getApplicationContext());
 
         // skip: jump to another activity for a quick debug
         if(DEBUG_SKIP_LOGIN) {
@@ -366,6 +375,20 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
 
             if (success) {
+
+                final User loggedUser = new User();
+                loggedUser.mail = mEmail;
+                loggedUser.uid = 1;
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        bookDb.userDao().deleteAll();
+                        bookDb.userDao().insert(loggedUser);
+                    }
+                }) .start();
+
                 Intent i = new Intent(mContext, SearchActivity.class);
                 startActivity(i);
             } else {
