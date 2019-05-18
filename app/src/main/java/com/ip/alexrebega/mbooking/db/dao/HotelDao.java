@@ -7,7 +7,6 @@ import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
 import com.ip.alexrebega.mbooking.model.Hotel;
-import com.ip.alexrebega.mbooking.model.Reservation;
 
 import java.util.List;
 
@@ -21,6 +20,7 @@ public interface HotelDao {
 
     @Delete
     void delete(Hotel... hotels);
+
     @Query("SELECT * FROM hotel")
-    List<Reservation> getAllHotels();
+    List<Hotel> getAllHotels();
 }

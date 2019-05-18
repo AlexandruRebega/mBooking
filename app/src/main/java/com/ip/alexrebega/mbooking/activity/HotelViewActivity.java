@@ -11,9 +11,8 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.ip.alexrebega.mbooking.BookingApp;
 import com.ip.alexrebega.mbooking.db.AppDatabase;
-import com.ip.alexrebega.mbooking.model.Hotel;
+import com.ip.alexrebega.mbooking.model.HotelDto;
 import com.ip.alexrebega.mbooking.R;
 import com.ip.alexrebega.mbooking.model.User;
 
@@ -21,7 +20,7 @@ import java.util.List;
 
 public class HotelViewActivity extends AppCompatActivity {
 
-    private Hotel hotel;
+    private HotelDto hotel;
     private TextView mDescTextView;
     private ImageView mImageView;
     private RatingBar mHotelRating;

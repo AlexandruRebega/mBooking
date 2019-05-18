@@ -9,6 +9,7 @@ import com.ip.alexrebega.mbooking.db.dao.HotelDao;
 import com.ip.alexrebega.mbooking.db.dao.ReservationDao;
 import com.ip.alexrebega.mbooking.db.dao.UserDao;
 import com.ip.alexrebega.mbooking.model.Hotel;
+import com.ip.alexrebega.mbooking.model.HotelDto;
 import com.ip.alexrebega.mbooking.model.Reservation;
 import com.ip.alexrebega.mbooking.model.User;
 

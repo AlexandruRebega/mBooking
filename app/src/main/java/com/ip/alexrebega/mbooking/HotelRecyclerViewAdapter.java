@@ -11,12 +11,12 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.ip.alexrebega.mbooking.activity.HotelViewActivity;
-import com.ip.alexrebega.mbooking.model.Hotel;
+import com.ip.alexrebega.mbooking.model.HotelDto;
 
 import java.util.List;
 
 public class HotelRecyclerViewAdapter extends RecyclerView.Adapter<HotelRecyclerViewAdapter.MyViewHolder> {
-    private List<Hotel> mDataset;
+    private List<HotelDto> mDataset;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -43,7 +43,7 @@ public class HotelRecyclerViewAdapter extends RecyclerView.Adapter<HotelRecycler
                 public void onClick(View v) {
                     int position = getAdapterPosition(); // gets item position
 
-                    Hotel h = getAdapterData(position);
+                    HotelDto h = getAdapterData(position);
                     if (position != RecyclerView.NO_POSITION) { // Check if an item was deleted, but the user clicked it before the UI removed it
                         Intent i = new Intent(v.getContext(), HotelViewActivity.class);
                         i.putExtra("hotelKey", h);
@@ -56,7 +56,7 @@ public class HotelRecyclerViewAdapter extends RecyclerView.Adapter<HotelRecycler
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public HotelRecyclerViewAdapter(List<Hotel> myDataset) {
+    public HotelRecyclerViewAdapter(List<HotelDto> myDataset) {
         mDataset = myDataset;
     }
 
@@ -91,7 +91,7 @@ public class HotelRecyclerViewAdapter extends RecyclerView.Adapter<HotelRecycler
     }
 
 
-    public Hotel getAdapterData(int position) {
+    public HotelDto getAdapterData(int position) {
         return mDataset.get(position);
     }
 }
