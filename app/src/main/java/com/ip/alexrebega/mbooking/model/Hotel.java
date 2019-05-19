@@ -14,7 +14,7 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
         onDelete = CASCADE))
 public class Hotel {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     public int uid;
     @ColumnInfo(name = "image_id")
     public int imageId;

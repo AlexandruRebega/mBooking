@@ -12,8 +12,10 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.ip.alexrebega.mbooking.db.AppDatabase;
+import com.ip.alexrebega.mbooking.model.Hotel;
 import com.ip.alexrebega.mbooking.model.HotelDto;
 import com.ip.alexrebega.mbooking.R;
+import com.ip.alexrebega.mbooking.model.Reservation;
 import com.ip.alexrebega.mbooking.model.User;
 
 import java.util.List;
@@ -28,6 +30,8 @@ public class HotelViewActivity extends AppCompatActivity {
     private TextView mHotelPrice;
     private Button mButton;
 
+    private int travelers;
+
     AppDatabase database;
 
     @Override
@@ -40,6 +44,7 @@ public class HotelViewActivity extends AppCompatActivity {
 
         hotel = getIntent().getParcelableExtra("hotelKey");
         toolbarLayout.setTitle(hotel.getmHotelName());
+        travelers = getIntent().getIntExtra("travelersKey", 0);
 
         mDescTextView = findViewById(R.id.hotel_desc_text);
         mDescTextView.setText(hotel.getmHotelDesc());
@@ -68,6 +73,23 @@ public class HotelViewActivity extends AppCompatActivity {
     private void showSnack(){
         database = AppDatabase.getAppDatabase(getApplicationContext());
         List<User> users = database.userDao().getAll();
+
+        Reservation reservation = new Reservation();
+        reservation.travelers = travelers;
+
+        final Hotel hotelEnt = new Hotel();
+        hotelEnt.imageId = hotel.getImageId();
+        hotelEnt.mHotelName = hotel.getmHotelName();
+        hotelEnt.mPrice = hotel.getmPrice();
+        hotelEnt.mRating = hotel.getmRating();
+        hotelEnt.mRooms = hotel.getmRooms();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                database.hotelDao().insert(hotelEnt);
+            }
+        }) .start();
 
         if(users!= null && users.size() != 0) {
             Snackbar.make(mButton, "Reservation complete :"+ users.get(0).mail, Snackbar.LENGTH_SHORT)

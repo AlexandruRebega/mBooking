@@ -13,7 +13,7 @@ import com.ip.alexrebega.mbooking.model.HotelDto;
 import com.ip.alexrebega.mbooking.model.Reservation;
 import com.ip.alexrebega.mbooking.model.User;
 
-@Database(entities = {User.class, Reservation.class, Hotel.class}, version = 1)
+@Database(entities = {User.class, Reservation.class, Hotel.class}, version = 2)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract UserDao userDao();
     public abstract ReservationDao reservationDao();
@@ -28,6 +28,7 @@ public abstract class AppDatabase extends RoomDatabase {
                             // allow queries on the main thread.
                             // Don't do this on a real app! See PersistenceBasicSample for an example.
                             .allowMainThreadQueries()
+                            .fallbackToDestructiveMigration()
                             .build();
         }
         return INSTANCE;

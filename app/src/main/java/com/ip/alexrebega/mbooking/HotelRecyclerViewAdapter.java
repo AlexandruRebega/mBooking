@@ -17,6 +17,16 @@ import java.util.List;
 
 public class HotelRecyclerViewAdapter extends RecyclerView.Adapter<HotelRecyclerViewAdapter.MyViewHolder> {
     private List<HotelDto> mDataset;
+    private int travelers;
+
+    public int getTravelers() {
+        return travelers;
+    }
+
+    public void setTravelers(int travelers) {
+        this.travelers = travelers;
+    }
+
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -47,6 +57,7 @@ public class HotelRecyclerViewAdapter extends RecyclerView.Adapter<HotelRecycler
                     if (position != RecyclerView.NO_POSITION) { // Check if an item was deleted, but the user clicked it before the UI removed it
                         Intent i = new Intent(v.getContext(), HotelViewActivity.class);
                         i.putExtra("hotelKey", h);
+                        i.putExtra("travelersKey", travelers);
                         v.getContext().startActivity(i);
                     }
                 }

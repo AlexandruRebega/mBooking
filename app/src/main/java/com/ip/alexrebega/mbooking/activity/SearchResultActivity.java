@@ -1,5 +1,6 @@
 package com.ip.alexrebega.mbooking.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -31,6 +32,9 @@ public class SearchResultActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
         mNoResultTextView = findViewById(R.id.no_result);
 
+        Intent i = getIntent();
+        int travelers = i.getIntExtra("travelersKey", 0);
+
         // Simulate network call
         try {
             Thread.sleep(300);
@@ -52,6 +56,7 @@ public class SearchResultActivity extends AppCompatActivity {
 
         // specify an adapter
         mAdapter = new HotelRecyclerViewAdapter(dummy_hotels_dataset);
+        ((HotelRecyclerViewAdapter) mAdapter).setTravelers(travelers);
         recyclerView.setAdapter(mAdapter);
     }
 

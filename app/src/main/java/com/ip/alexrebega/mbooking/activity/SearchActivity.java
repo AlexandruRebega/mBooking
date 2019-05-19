@@ -97,6 +97,7 @@ public class SearchActivity extends AppCompatActivity implements GoogleApiClient
     }
 
     private void launchSearch() {
+        int n = 0;
 
         mSearchView.setError(null);
         mFromEditText.setError(null);
@@ -162,7 +163,6 @@ public class SearchActivity extends AppCompatActivity implements GoogleApiClient
                 mUntilEditText.setError("Enter the check-out date");
             }
 
-            int n;
             try {
                 n = Integer.parseInt(howMany);
             }
@@ -183,6 +183,8 @@ public class SearchActivity extends AppCompatActivity implements GoogleApiClient
             focusView.requestFocus();
         } else {
             Intent i = new Intent(this, SearchResultActivity.class);
+            i.putExtra("travelersKey", n);
+
             startActivity(i);
         }
 
