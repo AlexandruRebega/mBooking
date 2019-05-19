@@ -74,27 +74,27 @@ public class HotelViewActivity extends AppCompatActivity {
         database = AppDatabase.getAppDatabase(getApplicationContext());
         List<User> users = database.userDao().getAll();
 
-        Reservation reservation = new Reservation();
-        reservation.travelers = travelers;
-
-        final Hotel hotelEnt = new Hotel();
-        hotelEnt.imageId = hotel.getImageId();
-        hotelEnt.mHotelName = hotel.getmHotelName();
-        hotelEnt.mPrice = hotel.getmPrice();
-        hotelEnt.mRating = hotel.getmRating();
-        hotelEnt.mRooms = hotel.getmRooms();
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                database.hotelDao().insert(hotelEnt);
-            }
-        }) .start();
+//        Reservation reservation = new Reservation();
+//        reservation.travelers = travelers;
+//
+//        final Hotel hotelEnt = new Hotel();
+//        hotelEnt.imageId = hotel.getImageId();
+//        hotelEnt.mHotelName = hotel.getmHotelName();
+//        hotelEnt.mPrice = hotel.getmPrice();
+//        hotelEnt.mRating = hotel.getmRating();
+//        hotelEnt.mRooms = hotel.getmRooms();
+//
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                database.hotelDao().insert(hotelEnt);
+//            }
+//        }) .start();
 
         if(users!= null && users.size() != 0) {
-            Snackbar.make(mButton, "Reservation complete :"+ users.get(0).mail, Snackbar.LENGTH_SHORT)
+            Snackbar.make(mButton, "Reservation complete :"+ users.get(0).mail +
+                    "Travelers: "+ travelers +", hotel: " + hotel.getmHotelName(), Snackbar.LENGTH_LONG)
                     .show();
-
         }
         else{
             Snackbar.make(mButton, "Reservation complete!", Snackbar.LENGTH_SHORT)
